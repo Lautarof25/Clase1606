@@ -39,9 +39,5 @@ describe("Test login", { testIsolation: false }, () => {
   })
   
 
-  it("Completar Username", () => {
-    cy.get('input[name=""]').type(user);
-    cy.get('input[name=""]').type(pass);
-    cy.get('.oxd-button')
-  });
+
 });
