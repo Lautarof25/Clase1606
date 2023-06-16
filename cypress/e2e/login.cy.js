@@ -1,8 +1,12 @@
 describe("Test login", { testIsolation: false }, () => {
     const wrongUser= 'ADMINISTRADOR';
     const wrongPass= 'PASSWORD';
+    const empty = "";
+    const elementP = "p"
     const user = 'Admin';
     const pass = 'admin123';
+    const invalidMessage = 'Invalid credentials'
+    const requireMessage = 'Required'
   it("Visitar pagina", () => {
     cy.clearLocalStorage();
     cy.clearCookies();
@@ -11,31 +15,35 @@ describe("Test login", { testIsolation: false }, () => {
     );
   });
 
-  it.skip('User y Pass Incorrectos',()=>{
-    cy.get('input[name=""]').clear()
-    cy.get('input[name=""]').clear().type(wrongPass);
-    cy.get('.oxd-button').click()
-    cy.get('p').contains('Invalid credentials')
+  it('User y Pass Incorrectos',()=>{
+    // cy.get('input[name="username"]').clear().type(wrongUser)
+    // cy.get('input[name="password"]').clear().type(wrongPass);
+    // cy.get('.oxd-button').click()
+    // cy.get('p').contains('Invalid credentials')
+    cy.loginTests(wrongUser,wrongPass,"p",invalidMessage)
   })
 
-  it.skip('Sin Password',()=>{
-    cy.get('input[name=""]').clear().type(wrongUser);
-    cy.get('.oxd-button').click()
-    cy.get('span').contains('Required')
+  it('Sin Password',()=>{
+    // cy.get('input[name="username"]').clear().type(wrongUser);
+    // cy.get('.oxd-button').click()
+    // cy.get('span').contains('Required')
+    cy.loginTests(wrongUser,empty,"",requireMessage)
   })
 
-  it.skip('Sin Usser',()=>{
-    cy.get('input[name=""]').clear()
-    cy.get('input[name=""]').clear().type(wrongPass);
-    cy.get('.oxd-button').click()
-    cy.get('span').contains('Required')
+  it('Sin Usser',()=>{
+    // cy.get('input[name="username"]').clear()
+    // cy.get('input[name="password"]').clear().type(wrongPass);
+    // cy.get('.oxd-button').click()
+    // cy.get('span').contains('Required')
+    cy.loginTests(empty,wrongPass,"",requireMessage)
   })
 
-  it.skip('Ambos campos vacios',()=>{
-    cy.get('input[name=""]').clear()
-    cy.get('input[name=""]').clear()
-    cy.get('.oxd-button').click()
-    cy.get('span').contains('Required').should('have.length', 1)
+  it('Ambos campos vacios',()=>{
+    // cy.get('input[name="username"]').clear()
+    // cy.get('input[name="password"]').clear()
+    // cy.get('.oxd-button').click()
+    // cy.get('span').contains('Required').should('have.length', 1)
+    cy.loginTests(empty,empty,"",requireMessage)
   })
   
 
