@@ -20,14 +20,14 @@ describe("Test login", { testIsolation: false }, () => {
     // cy.get('input[name="password"]').clear().type(wrongPass);
     // cy.get('.oxd-button').click()
     // cy.get('p').contains('Invalid credentials')
-    cy.loginTests(wrongUser,wrongPass,"p",invalidMessage)
+    cy.loginTests(wrongUser,wrongPass,elementP,invalidMessage)
   })
 
   it('Sin Password',()=>{
     // cy.get('input[name="username"]').clear().type(wrongUser);
     // cy.get('.oxd-button').click()
     // cy.get('span').contains('Required')
-    cy.loginTests(wrongUser,empty,"",requireMessage)
+    cy.loginTests(wrongUser,empty,empty,requireMessage)
   })
 
   it('Sin Usser',()=>{
@@ -35,7 +35,7 @@ describe("Test login", { testIsolation: false }, () => {
     // cy.get('input[name="password"]').clear().type(wrongPass);
     // cy.get('.oxd-button').click()
     // cy.get('span').contains('Required')
-    cy.loginTests(empty,wrongPass,"",requireMessage)
+    cy.loginTests(empty,wrongPass,empty,requireMessage)
   })
 
   it('Ambos campos vacios',()=>{
@@ -43,7 +43,7 @@ describe("Test login", { testIsolation: false }, () => {
     // cy.get('input[name="password"]').clear()
     // cy.get('.oxd-button').click()
     // cy.get('span').contains('Required').should('have.length', 1)
-    cy.loginTests(empty,empty,"",requireMessage)
+    cy.loginTests(empty,empty,empty,requireMessage)
   })
   
 

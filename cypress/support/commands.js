@@ -15,19 +15,21 @@
 Cypress.Commands.add('loginTests', (user, password,element,error) => {
     const inputUser = 'input[name="username"]'
     const inputPassword = 'input[name="password"]'
+    password
+    user
     if (user == "" && password == "") {
         cy.get(inputUser).clear()
         cy.get(inputPassword).clear()
-        user = 0
-        password = 0
+        // user = 0
+        // password = 0
     }else if(password == ""){
         cy.get(inputUser).clear().type(user)
         cy.get(inputPassword).clear();
-        password = 0
+        // password = 0
     }else if (user == "") {
         cy.get(inputUser).clear()
         cy.get(inputPassword).clear().type(password);  
-        user = 0
+        // user = 0
     }else {
         cy.get(inputUser).clear().type(user)
         cy.get(inputPassword).clear().type(password);
